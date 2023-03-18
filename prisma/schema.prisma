@@ -1,0 +1,81 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by the Prisma Client.
+model admins {
+  id       String
+  name     String   @db.VarChar(250)
+  phone    Decimal  @db.Decimal(11, 0)
+  email    String   @db.VarChar(255)
+  password String   @db.VarChar(255)
+  token    String   @db.Text
+  created  DateTime @default(now()) @db.DateTime(0)
+  updated  DateTime @db.DateTime(0)
+
+  @@ignore
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by the Prisma Client.
+model categories {
+  id      Int
+  name    String   @db.VarChar(255)
+  type    String   @db.VarChar(255)
+  seen    Int
+  created DateTime @default(now()) @db.DateTime(0)
+  updated DateTime @db.DateTime(0)
+
+  @@ignore
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by the Prisma Client.
+model orders {
+  id      String   @db.VarChar(255)
+  payLoad String   @db.VarChar(255)
+  uId     String
+  price   Decimal  @db.Decimal(11, 0)
+  status  String   @db.VarChar(200)
+  created DateTime @default(now()) @db.DateTime(0)
+  updated DateTime @db.DateTime(0)
+
+  @@ignore
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by the Prisma Client.
+model products {
+  id       Int      @db.UnsignedInt
+  name     String   @db.Text
+  comment  String   @db.VarChar(250)
+  perc     Int      @db.UnsignedInt
+  catId    Int      @db.UnsignedInt
+  mainSl   Int
+  mostSell Int
+  wonder   Int
+  status   String   @db.VarChar(200)
+  sold     Decimal  @db.Decimal(10, 0)
+  created  DateTime @default(now()) @db.DateTime(0)
+  updated  DateTime @db.DateTime(0)
+
+  @@ignore
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by the Prisma Client.
+model users {
+  id             String
+  name           String   @db.VarChar(255)
+  phone          Decimal  @db.Decimal(15, 0)
+  address        String?  @db.VarChar(255)
+  email          String   @db.VarChar(255)
+  token          String   @db.Text
+  balance        Decimal  @db.Decimal(15, 0)
+  activationCode Int      @db.UnsignedInt
+  created        DateTime @default(now()) @db.DateTime(0)
+  updated        DateTime @db.DateTime(0)
+
+  @@ignore
+}
