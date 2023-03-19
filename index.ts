@@ -1,6 +1,7 @@
 import express, { Request, Response, Express } from "express";
 import bodyParser from "body-parser";
 import dotenv from "dotenv";
+import { test } from "./test/test";
 
 dotenv.config();
 
@@ -16,6 +17,7 @@ app.get("/", (req: Request, res: Response) => {
 app.get("/test", () => {
   console.log("hello ");
 });
+app.get("/test/test", test);
 
 app.listen(port, () => {
   console.log(`⚡️[server]: Server is running at http://localhost:${port}`);
