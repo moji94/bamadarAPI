@@ -7,9 +7,8 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by the Prisma Client.
 model admins {
-  id       String
+  id       String   @id @default(cuid())
   name     String   @db.VarChar(250)
   phone    Decimal  @db.Decimal(11, 0)
   email    String   @db.VarChar(255)
@@ -18,24 +17,20 @@ model admins {
   created  DateTime @default(now()) @db.DateTime(0)
   updated  DateTime @db.DateTime(0)
 
-  @@ignore
 }
 
-/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by the Prisma Client.
 model categories {
-  id      Int
+  id       String   @id @default(cuid())
   name    String   @db.VarChar(255)
   type    String   @db.VarChar(255)
   seen    Int
   created DateTime @default(now()) @db.DateTime(0)
   updated DateTime @db.DateTime(0)
 
-  @@ignore
 }
 
-/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by the Prisma Client.
 model orders {
-  id      String   @db.VarChar(255)
+ id       String   @id @default(cuid())
   payLoad String   @db.VarChar(255)
   uId     String
   price   Decimal  @db.Decimal(11, 0)
@@ -43,12 +38,10 @@ model orders {
   created DateTime @default(now()) @db.DateTime(0)
   updated DateTime @db.DateTime(0)
 
-  @@ignore
 }
 
-/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by the Prisma Client.
 model products {
-  id       Int      @db.UnsignedInt
+  id       String   @id @default(cuid())
   name     String   @db.Text
   comment  String   @db.VarChar(250)
   perc     Int      @db.UnsignedInt
@@ -61,12 +54,10 @@ model products {
   created  DateTime @default(now()) @db.DateTime(0)
   updated  DateTime @db.DateTime(0)
 
-  @@ignore
 }
 
-/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by the Prisma Client.
 model users {
-  id             String
+ id       String   @id @default(cuid())
   name           String   @db.VarChar(255)
   phone          Decimal  @db.Decimal(15, 0)
   address        String?  @db.VarChar(255)
@@ -76,6 +67,4 @@ model users {
   activationCode Int      @db.UnsignedInt
   created        DateTime @default(now()) @db.DateTime(0)
   updated        DateTime @db.DateTime(0)
-
-  @@ignore
 }
