@@ -12,8 +12,10 @@ export const CreateAdmin = async (
     const phone: number = req.body.phone
     const email: string = req.body.email
     const password: string = req.body.password
+    console.log(req.body)
     const create = await prisma.admins.create({
       data: {
+        id: undefined,
         name: name,
         phone: phone,
         email: email,

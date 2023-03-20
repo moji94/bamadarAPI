@@ -3,6 +3,7 @@ import bodyParser from 'body-parser'
 import dotenv from 'dotenv'
 import { test } from './test/test'
 import { CreateAdmin } from './src/CreateAdmin'
+import { login } from './src/login'
 
 dotenv.config()
 
@@ -20,6 +21,7 @@ app.get('/test', () => {
 })
 app.get('/test/test', test)
 app.post('/CreateAdmin', CreateAdmin)
+app.post('/login', login)
 
 app.listen(port, () => {
   console.log(`⚡️[server]: Server is running at http://localhost:${port}`)
