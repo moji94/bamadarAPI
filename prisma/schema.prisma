@@ -22,7 +22,15 @@ model admins {
 model categories {
   id       String   @id @default(cuid())
   name    String   @db.VarChar(255)
-  type    String   @db.VarChar(255)
+  seen    Int
+  created DateTime @default(now()) @db.DateTime(0)
+  updated DateTime @db.DateTime(0)
+
+}
+model subcategories {
+  id       String   @id @default(cuid())
+  name    String   @db.VarChar(255)
+  catId    String   @db.VarChar(255)
   seen    Int
   created DateTime @default(now()) @db.DateTime(0)
   updated DateTime @db.DateTime(0)
@@ -45,7 +53,7 @@ model products {
   name     String   @db.Text
   comment  String   @db.VarChar(250)
   perc     Int      @db.UnsignedInt
-  catId    Int      @db.UnsignedInt
+  subcategoriesId    Int      @db.UnsignedInt
   mainSl   Int
   mostSell Int
   wonder   Int
