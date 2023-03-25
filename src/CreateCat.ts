@@ -7,11 +7,11 @@ export const CreateCat = async (req: Request, res: Response): Promise<void> => {
   const name: string = req.body.name
   const type: string = req.body.type
   try {
-    const create = await prisma.categories.create({
+    const create = await prisma.subcategories.create({
       data: {
         id: undefined,
         name: name,
-        type: type,
+        catId: type,
         seen: 0,
         created: new Date(),
         updated: new Date(),
