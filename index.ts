@@ -7,6 +7,7 @@ import { CreateCat } from './src/CreateCat'
 import { CreateProd } from './src/CreateProd'
 import { GetOrders, GetOrderById } from './src/GetOrders'
 import { GetCat, GetSubCat, GetSubCatById } from './src/GetCat'
+import { GetProd, GetProdByCat, GetProdById } from './src/GetProd'
 import { login } from './src/login'
 
 dotenv.config()
@@ -32,6 +33,9 @@ app.post('/GetOrderById', GetOrderById)
 app.post('/GetSubCatById', GetSubCatById)
 app.post('/GetCat', GetCat)
 app.post('/GetSubCat', GetSubCat)
+app.post('/GetProd', GetProd)
+app.post('/GetProdByCat', GetProdByCat)
+app.post('/GetProdById', GetProdById)
 app.post('/login', login)
 
 app.listen(port, () => {

@@ -16,63 +16,59 @@ model admins {
   token    String   @db.Text
   created  DateTime @default(now()) @db.DateTime(0)
   updated  DateTime @db.DateTime(0)
-
 }
 
 model categories {
-  id       String   @id @default(cuid())
+  id      String   @id @default(cuid())
   name    String   @db.VarChar(255)
   seen    Int
   created DateTime @default(now()) @db.DateTime(0)
   updated DateTime @db.DateTime(0)
-
 }
+
 model subcategories {
-  id       String   @id @default(cuid())
+  id      String   @id @default(cuid())
   name    String   @db.VarChar(255)
-  catId    String   @db.VarChar(255)
+  catId   String   @db.VarChar(255)
   seen    Int
   created DateTime @default(now()) @db.DateTime(0)
   updated DateTime @db.DateTime(0)
-
 }
 
 model orders {
- id       String   @id @default(cuid())
+  id      String   @id @default(cuid())
   payLoad String   @db.VarChar(255)
   uId     String
   price   Decimal  @db.Decimal(11, 0)
   status  String   @db.VarChar(200)
   created DateTime @default(now()) @db.DateTime(0)
   updated DateTime @db.DateTime(0)
-
 }
 
 model products {
-  id       String   @id @default(cuid())
-  name     String   @db.Text
-  comment  String   @db.VarChar(250)
-  perc     Int      @db.UnsignedInt
-  subcategoriesId    Int      @db.UnsignedInt
-  mainSl   Int
-  mostSell Int
-  wonder   Int
-  status   String   @db.VarChar(200)
-  sold     Decimal  @db.Decimal(10, 0)
-  created  DateTime @default(now()) @db.DateTime(0)
-  updated  DateTime @db.DateTime(0)
-
+  id              String   @id @default(cuid())
+  name            String   @db.Text
+  comment         String   @db.VarChar(250)
+  perc            Int      @db.UnsignedInt
+  mainSl          Int
+  mostSell        Int
+  wonder          Int
+  status          String   @db.VarChar(200)
+  sold            Decimal  @db.Decimal(10, 0)
+  created         DateTime @default(now()) @db.DateTime(0)
+  updated         DateTime @db.DateTime(0)
+  subcategoriesId String   @db.VarChar(255)
 }
 
 model users {
- id       String   @id @default(cuid())
+  id             String   @id @default(cuid())
   name           String   @db.VarChar(255)
   phone          Decimal  @db.Decimal(15, 0)
   address        String?  @db.VarChar(255)
-  email          String   @db.VarChar(255)
   token          String   @db.Text
   balance        Decimal  @db.Decimal(15, 0)
   activationCode Int      @db.UnsignedInt
   created        DateTime @default(now()) @db.DateTime(0)
   updated        DateTime @db.DateTime(0)
+  email          String   @db.VarChar(255)
 }
