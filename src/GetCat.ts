@@ -3,7 +3,7 @@ import { Request, Response } from 'express'
 
 const prisma = new PrismaClient()
 
-export const GetCat = async (res: Response, req: Request): Promise<void> => {
+export const GetCat = async (req: Request, res: Response): Promise<void> => {
   try {
     const get = await prisma.categories.findMany()
     if (get) {
