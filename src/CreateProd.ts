@@ -11,7 +11,7 @@ export const CreateProd = async (
     const name: string = req.body.name
     const comment: string = req.body.comment
     const perc: number = req.body.perc
-    const subcategoriesID: number = req.body.subcatId
+    const subcategoriesID: string = req.body.subcatId
     const mainSl: number = req.body.mainSl
     const mostSell: number = req.body.mostSell
     const wonder: number = req.body.wonder
@@ -22,7 +22,6 @@ export const CreateProd = async (
         comment: comment,
         perc: perc,
         subcategoriesId: subcategoriesID,
-
         mainSl: mainSl,
         mostSell: mostSell,
         wonder: wonder,
