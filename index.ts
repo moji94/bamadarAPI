@@ -10,6 +10,7 @@ import { GetCat, GetSubCat, GetSubCatById } from './src/GetCat'
 import { GetProd, GetProdByCat, GetProdById } from './src/GetProd'
 import { GetUsers, GetSingleUser } from './src/GetUsers'
 import { login } from './src/login'
+import cors from 'cors'
 
 dotenv.config()
 
@@ -17,6 +18,7 @@ const app: Express = express()
 const port = process.env.PORT || 8000
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
+app.use(cors())
 
 app.get('/', (req: Request, res: Response) => {
   res.status(200).send('Welcome to bamadar')
