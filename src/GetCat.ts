@@ -18,7 +18,12 @@ export const GetCat = async (req: Request, res: Response): Promise<void> => {
 
 export const GetSubCat = async (req: Request, res: Response): Promise<void> => {
   try {
-    const get = await prisma.subcategories.findMany()
+    const id: string = req.body.id
+    const get = await prisma.subcategories.findMany({
+      where: {
+        catId: id,
+      },
+    })
     if (get) {
       res.status(200).json(get)
     } else {
